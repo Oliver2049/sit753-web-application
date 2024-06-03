@@ -1,0 +1,77 @@
+pipeline {
+    agent any
+
+    environment {
+        NODEJS_HOME = tool name: 'NodeJS' 
+        PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/Oliver2049/sit753-web-application.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'npm install'
+                sh 'npm run build'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
+        stage('Code Quality Analysis') {
+            steps {
+                withSonarQubeEnv('My SonarQube Server') {
+                    sh 'sonar-scanner'
+                }
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    dockerImage = docker.build("my-web-app:${env.BUILD_ID}")
+                }
+            }
+        }
+        stage('Deploy to Staging') {
+            steps {
+                script {
+                    dockerImage.push()
+                    dockerImage.inside {
+                        sh 'docker run -d -p 3000:3000 my-web-app'
+                    }
+                }
+            }
+        }
+        stage('Deploy to Production') {
+            steps {
+                input message: 'Deploy to production?', ok: 'Deploy'
+                script {
+                    dockerImage.push()
+                    dockerImage.inside {
+                        sh 'docker run -d -p 3000:3000 my-web-app'
+                    }
+                }
+            }
+        }
+        stage('Monitor and Alert') {
+            steps {
+                sh 'curl -X POST "https://api.datadoghq.com/api/v1/monitor"'
+            }
+        }
+    }
+
+    post {
+        always {
+            junit 'test-results.xml'
+            archiveArtifacts artifacts: 'build/**/*', allowEmptyArchive: true
+            mail to: 'minhtien2049@gmail.com',
+                 subject: "Pipeline ${currentBuild.fullDisplayName}",
+                 body: "Build ${currentBuild.currentResult}: Check console output at ${env.BUILD_URL} to view the results."
+        }
+    }
+}
