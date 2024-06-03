@@ -23,17 +23,10 @@ pipeline {
                 sh 'npm test'
             }
         }
-        stage('Code Quality Analysis') {
-            steps {
-                withSonarQubeEnv('My SonarQube Server') {
-                    sh 'sonar-scanner'
-                }
-            }
-        }
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("musing_wilson:${env.BUILD_ID}")
+                    dockerImage = docker.build("jenkins:${env.BUILD_ID}")
                 }
             }
         }
@@ -42,7 +35,7 @@ pipeline {
                 script {
                     dockerImage.push()
                     dockerImage.inside {
-                        sh 'docker run -d -p 3000:3000 musing_wilson'
+                        sh 'docker run -d -p 3000:3000 jenkins'
                     }
                 }
             }
@@ -53,16 +46,12 @@ pipeline {
                 script {
                     dockerImage.push()
                     dockerImage.inside {
-                        sh 'docker run -d -p 3000:3000 my-web-app'
+                        sh 'docker run -d -p 3000:3000 jenkins'
                     }
                 }
             }
         }
-        stage('Monitor and Alert') {
-            steps {
-                sh 'curl -X POST "https://api.datadoghq.com/api/v1/monitor"'
-            }
-        }
+       
     }
 
     post {
