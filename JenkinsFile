@@ -33,7 +33,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("my-web-app:${env.BUILD_ID}")
+                    dockerImage = docker.build("musing_wilson:${env.BUILD_ID}")
                 }
             }
         }
@@ -42,7 +42,7 @@ pipeline {
                 script {
                     dockerImage.push()
                     dockerImage.inside {
-                        sh 'docker run -d -p 3000:3000 my-web-app'
+                        sh 'docker run -d -p 3000:3000 musing_wilson'
                     }
                 }
             }
