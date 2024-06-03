@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="author" content="Oliver Doan" />
+    <meta name="description" content="Oliver Beer Ltd" />
+    <script src="Login.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <title>Login</title>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid align-items-center">
+        <a class="navbar-brand" aria-current="page" href="home.html"
+          ><img src="quanaologo.gif" alt="Logo"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="home.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="New.html">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="Product.html">Products</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link active dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Services
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="Feedback.html">Feedback</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="Order.html">Order</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="Contact.html">Contact</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-dark" type="submit">Search</button>
+            <a href="Register.html">
+              <button class="btn btn-outline-dark" type="button">
+                Register
+              </button>
+            </a>
+            <a href="Login.html">
+              <button class="btn btn-outline-dark" type="button">Login</button>
+            </a>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <section class="bg-warning bg-gradient d-flex p-2">
+      <div class="container bg-warning bg-gradient d-flex p-2 w-75 mx-auto">
+        <header class="d-flex align-items-center">
+          <img src="Logo.png" class="d-block w-25 img-fluid" alt="LogoT" />
+          <h1 class="fs-1 text">Login</h1>
+        </header>
+      </div>
+    </section>
+
+    <div class="container p-2">
+      <form action="/login" method="post">
+        <div class="container mb-3">
+          <div class="row mb-3">
+            <label for="username" class="col-sm-2 col-form-label"
+              >Username:</label
+            >
+            <input
+              type="text"
+              class="col-sm-2 col-form-control"
+              id="username"
+              name="username"
+              placeholder="Enter username"
+            />
+            <div id="usermsg" class="col-sm-8 form-text"></div>
+          </div>
+          <div class="row mb-3">
+            <label for="password" class="col-sm-2 col-form-label"
+              >Password:</label
+            >
+            <input
+              type="password"
+              class="col-sm-2 col-form-control"
+              id="password"
+              name="password"
+              placeholder="Your password here..."
+            />
+            <div id="passwordmsg" class="col-sm-8 form-text"></div>
+          </div>
+          <div class="row mb-3">
+            <input
+              class="btn btn-primary col-sm-2 me-2"
+              type="submit"
+              onclick="validation()"
+              value="Login"
+            />
+            <input
+              class="btn btn-danger col-sm-1"
+              type="button"
+              onclick="resetForm()"
+              value="Reset"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <footer class="bg-dark text-white p-2">
+      <p class="text-center">
+        &copy; 2022 Oliver Beer Ltd. Last updated: 01/01/2024. Contact us at:
+        info@oliverbeer.com
+      </p>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

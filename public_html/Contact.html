@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="author" content="Oliver Doan" />
+    <meta name="description" content="Oliver Beer Ltd" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <title>Contact - MyOliverBrand</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid align-items-center">
+        <a class="navbar-brand" aria-current="page" href="home.html"
+          ><img src="quanaologo.gif" alt="Logo"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="home.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="New.html">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="Product.html">Products</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link active dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Services
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="Feedback.html">Feedback</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="Order.html">Order</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="Contact.html">Contact</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-dark" type="submit">Search</button>
+            <a href="Register.html">
+              <button class="btn btn-outline-dark" type="button">
+                Register
+              </button>
+            </a>
+            <a href="Login.html">
+              <button class="btn btn-outline-dark" type="button">Login</button>
+            </a>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <section class="bg-warning bg-gradient d-flex p-2">
+      <div class="container bg-warning bg-gradient d-flex p-2 w-75 mx-auto">
+        <header class="d-flex align-items-center">
+          <img src="Logo.png" class="d-block w-25 img-fluid" alt="LogoT" />
+          <h1 class="fs-1 text">Contact</h1>
+        </header>
+      </div>
+    </section>
+
+    <div class="container mb-2">
+      <h2>Contact Us</h2>
+      <form action="/contact" method="post">
+        <div class="mb-3">
+          <label for="fullname" class="form-label">Full Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="fullname"
+            name="fullname"
+            placeholder="Full name here..."
+          />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="name@email.com"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea
+            class="form-control"
+            id="message"
+            name="message"
+            placeholder="Write your message here..."
+            rows="6"
+          ></textarea>
+        </div>
+        <div class="row">
+          <div class="col-sm mx-auto d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary" value="Contact Us">
+              Submit
+            </button>
+          </div>
+          <div class="col-sm mx-auto d-flex justify-content-center">
+            <button type="reset" class="btn btn-primary">Reset</button>
+          </div>
+        </div>
+      </form>
+      <hr />
+
+      <p>Use the following button to check your message information from DB</p>
+      <form action="/users" method="get">
+        <button type="submit" value="Get Users" class="btn btn-primary">
+          Get Users
+        </button>
+      </form>
+    </div>
+    <br /><br /><br />
+    <br /><br /><br /><br />
+
+    <footer class="bg-dark text-white p-2">
+      <p class="text-center">
+        &copy; 2022 Oliver Beer Ltd. Last updated: 01/01/2024. Contact us at:
+        info@oliverbeer.com
+      </p>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
