@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test.js",
-    "start": "node index.js"
+    "test": "mocha test.js, npm test",
+    "start": "node index.js",
+    "build": "npm run build"
   },
   "author": "oliver",
   "license": "ISC",
