@@ -5,6 +5,9 @@ let express = require("express");
 let app = express();
 
 let sqlite3 = require("sqlite3").verbose();
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // persistent file database "myDB".
 let db = new sqlite3.Database("myDB");
@@ -48,6 +51,11 @@ app.get("/", function (req, res) {
 app.post("/login", function (req, res, next) {
   let username = req.body.username;
   let password = req.body.password;
+  if (!username || !password) {
+    return res
+      .status(400)
+      .json({ errors: { username: "Invalid username or password." } });
+  }
   let html = "";
 
   console.log("Validating login!");
@@ -441,10 +449,11 @@ app.get("/checkorder", function (req, res) {
 });
 
 // Tell our application to listen to requests at port 3000 on the localhost
-app.listen(port, function () {
+let server = app.listen(port, function () {
   // When the application starts, print to the console that our app is
   // running at http://localhost:3000  (where the port number is 3000 by
   // default). Print another message indicating how to shut the server down.
   console.log(`Web server running at: http://localhost:${port}`);
   console.log("Type Ctrl+C to shut down the web server");
 });
+module.exports = server;

@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-    NODEJS_HOME = "${tool 'NodeJS'}"
-    PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"
-}
+        NODEJS_HOME = "${tool 'NodeJS'}"
+        PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"
+    }
 
     stages {
         stage('Checkout') {
@@ -14,7 +14,6 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'npm install'
                 sh 'npm run build'
             }
         }
@@ -51,7 +50,6 @@ pipeline {
                 }
             }
         }
-       
     }
 
     post {
@@ -61,6 +59,10 @@ pipeline {
             mail to: 'minhtien2049@gmail.com',
                  subject: "Pipeline ${currentBuild.fullDisplayName}",
                  body: "Build ${currentBuild.currentResult}: Check console output at ${env.BUILD_URL} to view the results."
+            script {
+                // Cleanup Docker images and containers
+                sh 'docker system prune -f'
+            }
         }
     }
 }
